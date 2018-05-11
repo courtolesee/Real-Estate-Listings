@@ -62,7 +62,7 @@ Don't get too hung up on the card and layout. Getting the data on the page is mo
 
 ## Stretch Goals
 
-- [ ] Ability to delete an existing listing. Place the `delete` button on each listing card.
+- [ ] Ability to delete an existing listing. Place a `delete` button on each listing card.
 - [ ] Move all `$http` requests to an Angular Service
 
 
