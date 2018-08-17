@@ -39,13 +39,14 @@ Here is a mockup of a card-based layout for real estate listings. This is a guid
 - [ ] Create a client-side route, controller, and view file for Rental properties.
 - [ ] Display only those properties that are For Rent.
 - [ ] Display the listings in "card" elements, including the associated image. Images have been provided for you and assigned to each property.
-
+- [ ] Ability to delete an existing listing. Place a `delete` button on each listing card.
 
 ### Sale Property View/Route
 
 - [ ] Create a client-side route, controller, and view file for Sale properties.
 - [ ] Display only those properties that are For Sale.
 - [ ] Display the listings in "card" elements, including the associated image. Images have been provided for you and assigned to each property.
+- [ ] Ability to delete an existing property. Place a `delete` button on each property card.
 
 
 ## Dealing The Cards
@@ -61,12 +62,6 @@ Don't get too hung up on the card and layout. Getting the data on the page is mo
 
 
 ## Stretch Goals
-
-- [ ] Ability to delete an existing listing. Place a `delete` button on each listing card.
-- [ ] Move all `$http` requests to an Angular Service
-
-
-## More Stretch Goals
 
 - [ ] Create a dropdown/select so that the user doesn't need to type `sale` or `rent` for every new listing
 - [ ] Create a dropdown/select so that the user doesn't need to type the image url for every new listing
