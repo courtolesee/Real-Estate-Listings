@@ -26,7 +26,7 @@ Here is a mockup of a card-based layout for real estate listings. This is a guid
 
 ![Real Estate Mockups](RealEstate-mockups.jpg)
 
-The `Card` interface component is very common across the webs. They are in your future!
+The `Card` interface component is very common across the web. They are in your future!
 
 Bootstrap includes a card element, as do most popular CSS frameworks. Otherwise, creating one with your own CSS isn't so bad. W3 even has a page on it: [https://www.w3schools.com/howto/howto_css_cards.asp](https://www.w3schools.com/howto/howto_css_cards.asp)
 
