@@ -71,7 +71,6 @@ function renderListings(listing){
         $span.data(`id`, house.id);
         if($(`#addButtonSale`))
         $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;" /></div>`);
-        // $span.append(`<div><img src="${chooseImage($(`#images`).val())}" style="width: 200px;" /></div>`);
         $span.append(`<div>${house.cost}</div>`);
         $span.append(`<div>${house.sqft}</div>`);
         $span.append(`<div>${house.city}</div>`);
@@ -84,25 +83,25 @@ function renderListings(listing){
 function chooseImage(image){
     switch(image){
         case '1':
-            return "./images/classic-flats.jpg";
+            return "classic-flats.jpg";
             break;
         case '2':
-            return "./images/haunted.png";
+            return "haunted.png";
             break;
         case '3':
-            return "./images/older.jpg";
+            return "older.jpg";
             break;
         case '4':
-            return "./images/rental.jpg";
+            return "rental.jpg";
             break;
         case '5':
-            return "./images/rental2.jpg";
+            return "rental2.jpg";
             break;
         case '6':
-            return "./images/shiny.jpg";
+            return "shiny.jpg";
             break;
         case '7':
-            return "./images/stony.jpg";
+            return "stony.jpg";
             break;        
     }
 }
@@ -114,7 +113,7 @@ function addListing() {
         sqft: $(`#squareFootageIn`).val(),
         type: $(`#typeIn`).val(),
         city: $(`#cityIn`).val(),
-        image_path: $(`#picIn`).val()
+        image_path: chooseImage($(`#images`).val())
     }
     console.log('sending');
     $.ajax({
@@ -123,11 +122,10 @@ function addListing() {
         data: objectToSend
     }).then(function(response){
         console.log('back from POST with:');
-        getListings();
+        getListings3();
         $(`#squareFootageIn`).val(''),
         $(`#costIn`).val('');
         $(`#cityIn`).val('');
-        $(`#picIn`).val('');
     }).catch(function(error){
         alert('error adding listing');
         console.log(error);
