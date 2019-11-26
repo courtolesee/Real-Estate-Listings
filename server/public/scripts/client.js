@@ -44,7 +44,31 @@ function renderListings(listing){
         console.log('house.cost:', house.cost);
         let $span = $(`<span></span>`);
         $span.data(`id`, house.id);
-        $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;" /></div>`);
+
+        $span.append(`<div><img src="./images/${image}" style="width: 200px;" /></div>`);
+        switch(image){
+            case "classic-flats":
+                image = "./images/classic-flats.jpg";
+                break;
+            case "haunted":
+                image = "./images/haunted.png";
+                break;
+            case "older":
+                image = "./images/older.png";
+                break;
+            case "rental":
+                image = "./images/rental.png";
+                break;
+            case "rental2":
+                image = "./images/rental2.png";
+                break;
+            case "shiny":
+                image = "./images/shiny.png";
+                break;
+            case "stong":
+                image = "./images/stony.png";
+                break;        
+        }
         $span.append(`<div>${house.cost}</div>`);
         $span.append(`<div>${house.sqft}</div>`);
         $span.append(`<div>${house.city}</div>`);
@@ -53,6 +77,32 @@ function renderListings(listing){
         $(`.outputSale`).append($span);
     }
 }
+
+// function chooseImage(image){
+//     switch(image){
+//         case "classic-flats":
+//             image = "./images/classic-flats.jpg";
+//             break;
+//         case "haunted":
+//             image = "./images/haunted.png";
+//             break;
+//         case "older":
+//             image = "./images/older.png";
+//             break;
+//         case "rental":
+//             image = "./images/rental.png";
+//             break;
+//         case "rental2":
+//             image = "./images/rental2.png";
+//             break;
+//         case "shiny":
+//             image = "./images/shiny.png";
+//             break;
+//         case "stong":
+//             image = "./images/stony.png";
+//             break;        
+//     }
+// }
 
 function addListing() {
     console.log('in addListing');
@@ -73,7 +123,6 @@ function addListing() {
         getListings();
         $(`#squareFootageIn`).val(''),
         $(`#costIn`).val('');
-        $(`#typeIn`).val('');
         $(`#cityIn`).val('');
         $(`#picIn`).val('');
     }).catch(function(error){
