@@ -25,6 +25,30 @@ router.get(`/`, (req, res)=>{
     })
 })
 
+router.get(`/sale`, (req, res)=>{
+    console.log('in /sale GET');
+    let query = `SELECT * FROM listings WHERE type = 'sale';`;
+    pool.query(query)
+    .then(result=>{
+        res.send(result.rows);
+    }).catch(error=>{
+        console.log('ERROR GETTING LISTINGS ------------------------>', error);
+        res.sendStatus(500);
+    })
+})
+
+router.get(`/rent`, (req, res)=>{
+    console.log('in /rent GET');
+    let query = `SELECT * FROM listings WHERE type = 'rent';`;
+    pool.query(query)
+    .then(result=>{
+        res.send(result.rows);
+    }).catch(error=>{
+        console.log('ERROR GETTING LISTINGS ------------------------>', error);
+        res.sendStatus(500);
+    })
+})
+
 router.post(`/`, (req, res)=>{
     console.log('in / POST');
     let id = [req.body.cost, req.body.sqft, req.body.type, req.body.city, req.body.image_path];
