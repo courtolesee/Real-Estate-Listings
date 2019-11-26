@@ -7,11 +7,11 @@ $(document).ready(function() {
     $(`#addButtonRent`).on('click', addListing)
     $(`#forSale`).on('click', getListings)
     $(`#forRent`).on('click', getListings2)
+    $(`#showAll`).on('click', getListings3)
     
 });
 
 function deleteListing(){
-    console.log('usbdfksdf');
     let id = $(this).closest(`span`).data(`id`);
     $.ajax({
         method: `DELETE`,
