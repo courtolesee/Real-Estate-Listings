@@ -42,20 +42,25 @@ function renderListings(listing){
 function addListing() {
     console.log('in addListing');
     let objectToSend = {
-        sqFt: $(`#squareFootageIn`).val(''),
-        cost: $(`#costIn`).val(''),
-        type: $(`#typeIn`).val(''),
-        city: $(`#cityIn`).val(''),
-        pic: $(`#picIn`).val('')
+        cost: $(`#costIn`).val(),
+        sqft: $(`#squareFootageIn`).val(''),
+        type: $(`#typeIn`).val(),
+        city: $(`#cityIn`).val(),
+        image_path: $(`#picIn`).val()
     }
     console.log('sending', objectToSend);
     $.ajax({
         method: 'POST',
-        url: '/router',
+        url: '/listings',
         data: objectToSend
     }).then(function(response){
         console.log('back from POST with:', response);
         getListings();
+        $(`#squareFootageIn`).val(''),
+        $(`#costIn`).val('');
+        $(`#typeIn`).val('');
+        $(`#cityIn`).val('');
+        $(`#picIn`).val('');
     }).catch(function(error){
         alert('error adding listing');
         console.log(error);
