@@ -6,7 +6,7 @@ router.get(`/`, (req, res)=>{
     let query = `SELECT * FROM listings;`;
     pool.query(query)
     .then(result=>{
-        res.send(result);
+        res.send(result.rows);
     }).catch(error=>{
         console.log('ERROR GETTING LISTINGS ------------------------>', error);
         res.sendStatus(500);
