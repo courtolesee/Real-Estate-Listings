@@ -3,6 +3,8 @@ $(document).ready(function() {
     console.log('JQ ready');
     getListings();
     $(`.outputSale`).on(`click`, `.delete`, deleteListing);
+    $(`#addButtonSale`).on('click', addListing)
+    $(`#addButtonRent`).on('click', addListing)
 });
 
 function deleteListing(){
@@ -50,4 +52,27 @@ function renderListings(listing){
         $span.append(`<div><button class="delete">DELETE</button></div>`);
         $(`.outputSale`).append($span);
     }
+}
+
+function addListing() {
+    console.log('in addListing');
+    let objectToSend = {
+        sqFt: $(`#squareFootageIn`).val(''),
+        cost: $(`#costIn`).val(''),
+        type: $(`#typeIn`).val(''),
+        city: $(`#cityIn`).val(''),
+        pic: $(`#picIn`).val('')
+    }
+    console.log('sending', objectToSend);
+    $.ajax({
+        method: 'POST',
+        url: '/router',
+        data: objectToSend
+    }).then(function(response){
+        console.log('back from POST with:', response);
+        getListings();
+    }).catch(function(error){
+        alert('error adding listing');
+        console.log(error);
+    })
 }
