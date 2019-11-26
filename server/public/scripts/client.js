@@ -70,12 +70,12 @@ function renderListings(listing){
         let $span = $(`<span></span>`);
         $span.data(`id`, house.id);
         if($(`#addButtonSale`))
-        $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;" /></div>`);
-        $span.append(`<div>${house.cost}</div>`);
-        $span.append(`<div>${house.sqft}</div>`);
-        $span.append(`<div>${house.city}</div>`);
-        $span.append(`<div>${house.type}</div>`);
-        $span.append(`<div><button class="delete">DELETE</button></div>`);
+        $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;height: 125px;" /></div>`);
+        $span.append(`<div class="center">${house.cost}</div>`);
+        $span.append(`<div class="center">${house.sqft}</div>`);
+        $span.append(`<div class="center">${house.city}</div>`);
+        $span.append(`<div class="center">${house.type}</div>`);
+        $span.append(`<div class="center"><button class="delete">DELETE</button></div>`);
         $(`.outputSale`).append($span);
     }
 }
@@ -123,8 +123,9 @@ function addListing() {
     }).then(function(response){
         console.log('back from POST with:');
         getListings3();
-        $(`#squareFootageIn`).val(''),
+        $(`#squareFootageIn`).val('');
         $(`#costIn`).val('');
+        $(`#typeIn`).val('');
         $(`#cityIn`).val('');
     }).catch(function(error){
         alert('error adding listing');
