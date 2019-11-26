@@ -1,3 +1,14 @@
+DROP TABLE "listings"; -- Deletes entire table
+
+CREATE TABLE "listings" (
+	"id" serial primary key,
+	"cost" integer,
+	"sqft" integer,
+	"type" varchar(120),
+	"city" varchar(120),
+	"image_path" varchar(255)
+);
+
 INSERT INTO "listings" ("cost", "sqft", "type", "city", "image_path")
 VALUES (123000, 1500, 'sale', 'Forest Lake', 'shiny.jpg'),
 (90000, 1200, 'sale', 'Blaine', 'stony.jpg'),
