@@ -2,7 +2,23 @@
 $(document).ready(function() {
     console.log('JQ ready');
     getListings();
+    $(`.outputSale`).on(`click`, `.delete`, deleteListing);
 });
+
+function deleteListing(){
+    console.log('usbdfksdf');
+    let id = $(this).closest(`span`).data(`id`);
+    $.ajax({
+        method: `DELETE`,
+        url: `/listings/${id}`
+    }).then(function(response){
+        console.log(`in /${id} DELETE`);
+        getListings();
+    }).catch(function(error){
+    alert(`something went wrong`);
+    console.log(error)
+    });
+}
 
 function getListings(){
     console.log('in getListings');
@@ -20,7 +36,7 @@ function getListings(){
 }
 
 function renderListings(listing){
-    $(`.output`).empty();
+    $(`.outputSale`).empty();
     for(let i=0; i<listing.length; i++) {
         let house = listing[i]
         console.log('house.cost:', house.cost);
@@ -32,6 +48,6 @@ function renderListings(listing){
         $span.append(`<div>${house.city}</div>`);
         $span.append(`<div>${house.type}</div>`);
         $span.append(`<div><button class="delete">DELETE</button></div>`);
-        $(`.output`).append($span);
+        $(`.outputSale`).append($span);
     }
 }
