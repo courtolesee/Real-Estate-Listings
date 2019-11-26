@@ -1,40 +1,16 @@
-// to start:
-// npm init --yes
-// git init
-// npm install express pg
-// make .gitignore: (node_modules, .DS_Server)
-// copy and paste this in package.json scripts: "start": "node server/server.js"
-
-// requires
-const express = require( 'express' );
+/** ---- DO NOT MODIFY THIS FILE ---- **/
+const express = require('express');
 const app = express();
-const bodyParser = require( 'body-parser' );
-const pg = require( 'pg' );
+const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5001;
 
-// uses
-app.use( express.static( 'server/public' ) ) ;
-app.use( bodyParser.urlencoded( { extended: true } ) );
+const treats = require('./routes/router');
 
-// db stuff
-const Pool = pg.Pool;
-const pool = new Pool({
-    database: '',
-    host: '',
-    port: 5432,
-    max: 12,
-    idleTimeoutMillis: 30000
-}); // end pool
+app.use(express.static('./server/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-pool.on('connect', ()=>{
-    console.log( 'connected to db' );
-})
+app.use('/treats', treats);
 
-// globals
-const port = 5001;
-
-// server up
-app.listen( port, ()=>{
-    console.log( 'server up on:', port );
-}) //end server up  
-
-// routes
+app.listen(PORT, () => {
+  console.log('Now listening on port: ', PORT);
+});
