@@ -4,11 +4,9 @@ $(document).ready(function() {
     getListings3();
     $(`.outputSale`).on(`click`, `.delete`, deleteListing);
     $(`#addButtonSale`).on('click', addListing)
-    $(`#addButtonRent`).on('click', addListing)
     $(`#forSale`).on('click', getListings)
     $(`#forRent`).on('click', getListings2)
     $(`#showAll`).on('click', getListings3)
-    
 });
 
 function deleteListing(){
@@ -18,7 +16,7 @@ function deleteListing(){
         url: `/listings/${id}`
     }).then(function(response){
         console.log(`in /${id} DELETE`);
-        getListings();
+        getListings3();
     }).catch(function(error){
     alert(`something went wrong`);
     console.log(error)
@@ -71,31 +69,9 @@ function renderListings(listing){
         let house = listing[i]
         let $span = $(`<span></span>`);
         $span.data(`id`, house.id);
-
-        $span.append(`<div><img src="./images/${image}" style="width: 200px;" /></div>`);
-        switch(image){
-            case "classic-flats":
-                image = "./images/classic-flats.jpg";
-                break;
-            case "haunted":
-                image = "./images/haunted.png";
-                break;
-            case "older":
-                image = "./images/older.png";
-                break;
-            case "rental":
-                image = "./images/rental.png";
-                break;
-            case "rental2":
-                image = "./images/rental2.png";
-                break;
-            case "shiny":
-                image = "./images/shiny.png";
-                break;
-            case "stong":
-                image = "./images/stony.png";
-                break;        
-        }
+        if($(`#addButtonSale`))
+        $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;" /></div>`);
+        // $span.append(`<div><img src="${chooseImage($(`#images`).val())}" style="width: 200px;" /></div>`);
         $span.append(`<div>${house.cost}</div>`);
         $span.append(`<div>${house.sqft}</div>`);
         $span.append(`<div>${house.city}</div>`);
@@ -105,31 +81,31 @@ function renderListings(listing){
     }
 }
 
-// function chooseImage(image){
-//     switch(image){
-//         case "classic-flats":
-//             image = "./images/classic-flats.jpg";
-//             break;
-//         case "haunted":
-//             image = "./images/haunted.png";
-//             break;
-//         case "older":
-//             image = "./images/older.png";
-//             break;
-//         case "rental":
-//             image = "./images/rental.png";
-//             break;
-//         case "rental2":
-//             image = "./images/rental2.png";
-//             break;
-//         case "shiny":
-//             image = "./images/shiny.png";
-//             break;
-//         case "stong":
-//             image = "./images/stony.png";
-//             break;        
-//     }
-// }
+function chooseImage(image){
+    switch(image){
+        case '1':
+            return "./images/classic-flats.jpg";
+            break;
+        case '2':
+            return "./images/haunted.png";
+            break;
+        case '3':
+            return "./images/older.jpg";
+            break;
+        case '4':
+            return "./images/rental.jpg";
+            break;
+        case '5':
+            return "./images/rental2.jpg";
+            break;
+        case '6':
+            return "./images/shiny.jpg";
+            break;
+        case '7':
+            return "./images/stony.jpg";
+            break;        
+    }
+}
 
 function addListing() {
     console.log('in addListing');
