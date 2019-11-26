@@ -118,7 +118,6 @@ function renderFeaturedHomes(listing){
         $span.append(`<div class="center">${house.sqft}</div>`);
         $span.append(`<div class="center">${house.city}</div>`);
         $span.append(`<div class="center">${house.type}</div>`);
-        $span.append(`<div class="center"><button class="delete">DELETE</button></div>`);
         $(`#featuredOut`).append($span);
     }
 }
