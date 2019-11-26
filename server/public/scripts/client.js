@@ -109,12 +109,24 @@ function chooseImage(image){
     }
 }
 
+function chooseSaleRent (type){
+    switch(type){
+        case 'sale':
+            return "sale";
+            break;
+        case 'rent':
+            return "rent";
+            break;
+    }
+}
+
+
 function addListing() {
     console.log('in addListing');
     let objectToSend = {
         cost: $(`#costIn`).val(),
         sqft: $(`#squareFootageIn`).val(),
-        type: $(`#typeIn`).val(),
+        type: chooseSaleRent($(`#saleOrRent`).val()),
         city: $(`#cityIn`).val(),
         image_path: chooseImage($(`#images`).val())
     }
