@@ -25,6 +25,42 @@ router.get(`/`, (req, res)=>{
     })
 })
 
+router.get(`/featured`, (req, res)=>{
+    console.log('in /featured GET');
+    let query = `SELECT * FROM listings ORDER BY cost ASC LIMIT 5;`;
+    pool.query(query)
+    .then(result=>{
+        res.send(result.rows);
+    }).catch(error=>{
+        console.log('ERROR GETTING LISTINGS ------------------------>', error);
+        res.sendStatus(500);
+    })
+})
+
+router.get(`/featuredsale`, (req, res)=>{
+    console.log('in /featured GET');
+    let query = `SELECT * FROM listings WHERE type = 'sale' ORDER BY cost ASC LIMIT 5;`;
+    pool.query(query)
+    .then(result=>{
+        res.send(result.rows);
+    }).catch(error=>{
+        console.log('ERROR GETTING LISTINGS ------------------------>', error);
+        res.sendStatus(500);
+    })
+})
+
+router.get(`/featuredrent`, (req, res)=>{
+    console.log('in /featured GET');
+    let query = `SELECT * FROM listings WHERE type = 'rent' ORDER BY cost ASC LIMIT 5;`;
+    pool.query(query)
+    .then(result=>{
+        res.send(result.rows);
+    }).catch(error=>{
+        console.log('ERROR GETTING LISTINGS ------------------------>', error);
+        res.sendStatus(500);
+    })
+})
+
 router.get(`/sale`, (req, res)=>{
     console.log('in /sale GET');
     let query = `SELECT * FROM listings WHERE type = 'sale';`;
