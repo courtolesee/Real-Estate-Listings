@@ -5,3 +5,12 @@ body {
 span {
     display: inline-block;
 }
+
+span {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.center {
+    text-align: center;
+}
