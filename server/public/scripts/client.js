@@ -7,10 +7,11 @@ $(document).ready(function() {
 function getListings(){
     console.log('in getListings');
     $.ajax({
-        method: `POST`,
+        method: `GET`,
         url: `/listings`
     }).then(function(response){
         console.log('in /listings POST');
+        console.log('respose:', response);
         renderListings(response);
     }).catch(function(error){
     alert(`something went wrong`);
@@ -19,16 +20,18 @@ function getListings(){
 }
 
 function renderListings(listing){
-    $(`#output`).empty();
+    $(`.output`).empty();
     for(let i=0; i<listing.length; i++) {
         let house = listing[i]
+        console.log('house.cost:', house.cost);
         let $span = $(`<span></span>`);
         $span.data(`id`, house.id);
-        $span.append(`<div>${house.image_path}</div>`);
+        $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;" /></div>`);
         $span.append(`<div>${house.cost}</div>`);
         $span.append(`<div>${house.sqft}</div>`);
         $span.append(`<div>${house.city}</div>`);
         $span.append(`<div>${house.type}</div>`);
         $span.append(`<div><button class="delete">DELETE</button></div>`);
+        $(`.output`).append($span);
     }
 }
