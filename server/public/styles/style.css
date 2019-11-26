@@ -14,3 +14,7 @@ span {
 .center {
     text-align: center;
 }
+
+#featuredOut {
+    border: 10px solid black;
+}

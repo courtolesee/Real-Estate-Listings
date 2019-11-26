@@ -26,12 +26,52 @@ function deleteListing(){
     }
 }
 
+function getFeaturedHomes(){
+    $.ajax({
+        method: `GET`,
+        url: `/listings/featured`
+    }).then(function(response){
+        console.log('in /featured GET');
+        renderFeaturedHomes(response);
+    }).catch(function(error){
+    alert(`something went wrong`);
+    console.log(error)
+    });
+}
+
+function getFeaturedHomes2(){
+    $.ajax({
+        method: `GET`,
+        url: `/listings/featuredsale`
+    }).then(function(response){
+        console.log('in /featured GET');
+        renderFeaturedHomes(response);
+    }).catch(function(error){
+    alert(`something went wrong`);
+    console.log(error)
+    });
+}
+
+function getFeaturedHomes3(){
+    $.ajax({
+        method: `GET`,
+        url: `/listings/featuredrent`
+    }).then(function(response){
+        console.log('in /featured GET');
+        renderFeaturedHomes(response);
+    }).catch(function(error){
+    alert(`something went wrong`);
+    console.log(error)
+    });
+}
+
 function getListings(){
     $.ajax({
         method: `GET`,
         url: `/listings/sale`
     }).then(function(response){
         console.log('in /listings/sale GET');
+        getFeaturedHomes2();
         renderListings(response);
     }).catch(function(error){
     alert(`something went wrong`);
@@ -45,6 +85,7 @@ function getListings2(){
         url: `/listings/rent`
     }).then(function(response){
         console.log('in /listings/rent GET');
+        getFeaturedHomes3();
         renderListings(response);
     }).catch(function(error){
     alert(`something went wrong`);
@@ -58,6 +99,7 @@ function getListings3(){
         url: `/listings`
     }).then(function(response){
         console.log('in /listings GET');
+        getFeaturedHomes();
         renderListings(response);
     }).catch(function(error){
     alert(`something went wrong`);
@@ -65,6 +107,21 @@ function getListings3(){
     });
 }
 
+function renderFeaturedHomes(listing){
+    $(`#featuredOut`).empty();
+    for(let i=0; i<listing.length; i++) {
+        let house = listing[i]
+        let $span = $(`<span></span>`);
+        $span.data(`id`, house.id);
+        $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;height: 125px;" /></div>`);
+        $span.append(`<div class="center">${house.cost}</div>`);
+        $span.append(`<div class="center">${house.sqft}</div>`);
+        $span.append(`<div class="center">${house.city}</div>`);
+        $span.append(`<div class="center">${house.type}</div>`);
+        $span.append(`<div class="center"><button class="delete">DELETE</button></div>`);
+        $(`#featuredOut`).append($span);
+    }
+}
 
 function renderListings(listing){
     $(`.outputSale`).empty();
@@ -72,7 +129,6 @@ function renderListings(listing){
         let house = listing[i]
         let $span = $(`<span></span>`);
         $span.data(`id`, house.id);
-        if($(`#addButtonSale`))
         $span.append(`<div><img src="./images/${house.image_path}" style="width: 200px;height: 125px;" /></div>`);
         $span.append(`<div class="center">${house.cost}</div>`);
         $span.append(`<div class="center">${house.sqft}</div>`);
