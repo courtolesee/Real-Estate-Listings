@@ -58,7 +58,7 @@ function addListing() {
     console.log('in addListing');
     let objectToSend = {
         cost: $(`#costIn`).val(),
-        sqft: $(`#squareFootageIn`).val(''),
+        sqft: $(`#squareFootageIn`).val(),
         type: $(`#typeIn`).val(),
         city: $(`#cityIn`).val(),
         image_path: $(`#picIn`).val()
