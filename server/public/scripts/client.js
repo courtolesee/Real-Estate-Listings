@@ -11,16 +11,19 @@ $(document).ready(function() {
 
 function deleteListing(){
     let id = $(this).closest(`span`).data(`id`);
-    $.ajax({
-        method: `DELETE`,
-        url: `/listings/${id}`
-    }).then(function(response){
-        console.log(`in /${id} DELETE`);
-        getListings3();
-    }).catch(function(error){
-    alert(`something went wrong`);
-    console.log(error)
-    });
+    let popup = confirm(`Delete this listing?`);
+    if(popup == true){
+        $.ajax({
+            method: `DELETE`,
+            url: `/listings/${id}`
+        }).then(function(response){
+            console.log(`in /${id} DELETE`);
+            getListings3();
+        }).catch(function(error){
+        alert(`something went wrong`);
+        console.log(error)
+        });
+    }
 }
 
 function getListings(){
