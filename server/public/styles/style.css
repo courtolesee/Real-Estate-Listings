@@ -33,11 +33,13 @@ h2 {
 }
 
 #showAll:hover, #forSale:hover, #forRent:hover {
-    color: rgb(155, 97, 51)
+    color: rgb(155, 97, 51);
+    border-radius: 8px;   
 }
 
 #addListing:hover {
-    color: rgb(155, 97, 51)
+    color: rgb(155, 97, 51);
+    border-radius: 8px; 
 }
 
 .btns {
@@ -85,4 +87,7 @@ ul {
 .userInputs {
     width: 15%;
     font-size: 20px;
+
 }
+
+
