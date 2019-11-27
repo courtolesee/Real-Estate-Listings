@@ -1,5 +1,48 @@
 body {
-    width: 100%;
+    background-color: rgb(172, 184, 164);
+    padding: 0%;
+    margin: 0%;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(39, 44, 35);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 5em;
+    margin-top: 1%;
+    margin-bottom: .5%;
+
+}
+
+h2 {
+    margin-left: 2%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#showAll, #forSale, #forRent {
+    font-size: 30px;
+    margin: .6em;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    border-color: rgb(91, 104, 82);
+    border-radius: 8px;   
+}
+
+#addButtonSale {
+    border-color: rgb(91, 104, 82);
+    border-radius: 8px;   
+}
+
+#showAll:hover, #forSale:hover, #forRent:hover {
+    color: rgb(155, 97, 51)
+}
+
+#addButtonSale:hover {
+    color: rgb(155, 97, 51)
+}
+
+.btns {
+    text-align: center;
 }
 
 span {
@@ -7,8 +50,17 @@ span {
 }
 
 span {
-    border: 1px solid black;
-    margin: 10px;
+    border: 3px solid rgb(58, 57, 57);
+    margin: 30px;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px rgb(78, 78, 78);
+}
+
+.inputDiv {
+    background-color: rgb(91, 104, 82);
+    padding: 2%;
+    margin-top: 1%;
+    text-align: center;
 }
 
 .center {
@@ -16,5 +68,21 @@ span {
 }
 
 #featuredOut {
-    border: 10px solid black;
+    background-color: rgb(209, 218, 188);
+    padding: 25px;
+    border-top: 3px solid rgb(58, 57, 57);
+    border-bottom: 3px solid rgb(58, 57, 57);
+    margin: 0%;
 }
+
+
+#card-body {
+    background-color: white;
+}
+
+
+.userInputs {
+    width: 15%;
+    font-size: 20px;
+}
+
