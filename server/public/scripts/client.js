@@ -1,7 +1,7 @@
 // on document load
 $(document).ready(function() {
     getListings();
-    $(`#addButtonSale`).on('click', addListing)
+    $(`#addListing`).on('click', addListing)
     $(`.outputSale`).on(`click`, `.delete`, deleteListing);
     $(`#forRent`).on('click', getListingsRent)
     $(`#forSale`).on('click', getListingsSale)
@@ -11,7 +11,7 @@ $(document).ready(function() {
 function addListing() {
     let objectToSend = {
         cost: $(`#costIn`).val(),
-        sqft: $(`#squareFootageIn`).val(),
+        sqft: $(`#sqftIn`).val(),
         type: chooseSaleRent($(`#saleOrRent`).val()),
         city: $(`#cityIn`).val(),
         image_path: chooseImage($(`#images`).val())
@@ -23,10 +23,8 @@ function addListing() {
     }).then(function(response){
         console.log('in /listings POST');
         getListings();
-        $(`#squareFootageIn`).val('');
-        $(`#costIn`).val('');
-        $(`#typeIn`).val('');
-        $(`#cityIn`).val('');
+        $(`.input`).val('');
+        $(`#sqftIn`).focus();
     }).catch(function(error){
         alert('error adding listing');
         console.log(error);
@@ -90,6 +88,10 @@ function getFeaturedHomesSale(){
 }
 
 function getListings(){
+    // if($(this) !== Window){  ////////////Attempting to consolidate three GETs into one based on button ID
+    //     console.log('true');
+    //     let el = $(this).val();
+    // }
     $.ajax({
         method: `GET`,
         url: `/listings`
@@ -104,6 +106,7 @@ function getListings(){
 }
 
 function getListingsRent(){
+    console.log('this:', $(this).val());
     $.ajax({
         method: `GET`,
         url: `/listings/rent`
@@ -163,7 +166,6 @@ function renderListings(listing){
 }
 
 function chooseImage(image){
-    console.log('image:', image);
     switch(image){
         case image:
             return image;
