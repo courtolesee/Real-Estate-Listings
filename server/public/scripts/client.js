@@ -1,13 +1,37 @@
 // on document load
 $(document).ready(function() {
-    console.log('JQ ready');
-    getListings3();
-    $(`.outputSale`).on(`click`, `.delete`, deleteListing);
+    getListings();
     $(`#addButtonSale`).on('click', addListing)
-    $(`#forSale`).on('click', getListings)
-    $(`#forRent`).on('click', getListings2)
-    $(`#showAll`).on('click', getListings3)
+    $(`.outputSale`).on(`click`, `.delete`, deleteListing);
+    $(`#forRent`).on('click', getListingsRent)
+    $(`#forSale`).on('click', getListingsSale)
+    $(`#showAll`).on('click', getListings)
 });
+
+function addListing() {
+    let objectToSend = {
+        cost: $(`#costIn`).val(),
+        sqft: $(`#squareFootageIn`).val(),
+        type: chooseSaleRent($(`#saleOrRent`).val()),
+        city: $(`#cityIn`).val(),
+        image_path: chooseImage($(`#images`).val())
+    }
+    $.ajax({
+        method: 'POST',
+        url: '/listings',
+        data: objectToSend
+    }).then(function(response){
+        console.log('in /listings POST');
+        getListings();
+        $(`#squareFootageIn`).val('');
+        $(`#costIn`).val('');
+        $(`#typeIn`).val('');
+        $(`#cityIn`).val('');
+    }).catch(function(error){
+        alert('error adding listing');
+        console.log(error);
+    })
+}
 
 function deleteListing(){
     let id = $(this).closest(`span`).data(`id`);
@@ -18,7 +42,7 @@ function deleteListing(){
             url: `/listings/${id}`
         }).then(function(response){
             console.log(`in /${id} DELETE`);
-            getListings3();
+            getListings();
         }).catch(function(error){
         alert(`something went wrong`);
         console.log(error)
@@ -39,20 +63,7 @@ function getFeaturedHomes(){
     });
 }
 
-function getFeaturedHomes2(){
-    $.ajax({
-        method: `GET`,
-        url: `/listings/featuredsale`
-    }).then(function(response){
-        console.log('in /featured GET');
-        renderFeaturedHomes(response);
-    }).catch(function(error){
-    alert(`something went wrong`);
-    console.log(error)
-    });
-}
-
-function getFeaturedHomes3(){
+function getFeaturedHomesRent(){
     $.ajax({
         method: `GET`,
         url: `/listings/featuredrent`
@@ -65,41 +76,54 @@ function getFeaturedHomes3(){
     });
 }
 
+function getFeaturedHomesSale(){
+    $.ajax({
+        method: `GET`,
+        url: `/listings/featuredsale`
+    }).then(function(response){
+        console.log('in /featured GET');
+        renderFeaturedHomes(response);
+    }).catch(function(error){
+    alert(`something went wrong`);
+    console.log(error)
+    });
+}
+
 function getListings(){
-    $.ajax({
-        method: `GET`,
-        url: `/listings/sale`
-    }).then(function(response){
-        console.log('in /listings/sale GET');
-        getFeaturedHomes2();
-        renderListings(response);
-    }).catch(function(error){
-    alert(`something went wrong`);
-    console.log(error)
-    });
-}
-
-function getListings2(){
-    $.ajax({
-        method: `GET`,
-        url: `/listings/rent`
-    }).then(function(response){
-        console.log('in /listings/rent GET');
-        getFeaturedHomes3();
-        renderListings(response);
-    }).catch(function(error){
-    alert(`something went wrong`);
-    console.log(error)
-    });
-}
-
-function getListings3(){
     $.ajax({
         method: `GET`,
         url: `/listings`
     }).then(function(response){
         console.log('in /listings GET');
         getFeaturedHomes();
+        renderListings(response);
+    }).catch(function(error){
+    alert(`something went wrong`);
+    console.log(error)
+    });
+}
+
+function getListingsRent(){
+    $.ajax({
+        method: `GET`,
+        url: `/listings/rent`
+    }).then(function(response){
+        console.log('in /listings/rent GET');
+        getFeaturedHomesRent();
+        renderListings(response);
+    }).catch(function(error){
+    alert(`something went wrong`);
+    console.log(error)
+    });
+}
+
+function getListingsSale(){
+    $.ajax({
+        method: `GET`,
+        url: `/listings/sale`
+    }).then(function(response){
+        console.log('in /listings/sale GET');
+        getFeaturedHomesSale();
         renderListings(response);
     }).catch(function(error){
     alert(`something went wrong`);
@@ -139,66 +163,18 @@ function renderListings(listing){
 }
 
 function chooseImage(image){
+    console.log('image:', image);
     switch(image){
-        case '1':
-            return "classic-flats.jpg";
-            break;
-        case '2':
-            return "haunted.png";
-            break;
-        case '3':
-            return "older.jpg";
-            break;
-        case '4':
-            return "rental.jpg";
-            break;
-        case '5':
-            return "rental2.jpg";
-            break;
-        case '6':
-            return "shiny.jpg";
-            break;
-        case '7':
-            return "stony.jpg";
-            break;        
+        case image:
+            return image;
+            break;   
     }
 }
 
 function chooseSaleRent (type){
     switch(type){
-        case 'sale':
-            return "sale";
-            break;
-        case 'rent':
-            return "rent";
+        case type:
+            return type;
             break;
     }
-}
-
-
-function addListing() {
-    console.log('in addListing');
-    let objectToSend = {
-        cost: $(`#costIn`).val(),
-        sqft: $(`#squareFootageIn`).val(),
-        type: chooseSaleRent($(`#saleOrRent`).val()),
-        city: $(`#cityIn`).val(),
-        image_path: chooseImage($(`#images`).val())
-    }
-    console.log('sending');
-    $.ajax({
-        method: 'POST',
-        url: '/listings',
-        data: objectToSend
-    }).then(function(response){
-        console.log('back from POST with:');
-        getListings3();
-        $(`#squareFootageIn`).val('');
-        $(`#costIn`).val('');
-        $(`#typeIn`).val('');
-        $(`#cityIn`).val('');
-    }).catch(function(error){
-        alert('error adding listing');
-        console.log(error);
-    })
 }
