@@ -12,18 +12,20 @@
 </head>
 <body>
     <h1>Real Estate</h1>
-    <button id="showAll" data-name="2">Show All</button>
-    <button id="forSale" data-name="1">For Sale</button>
-    <button id="forRent" data-name="2">For Rent</button>
-    <div class="input div">
-        <input type="text" id="squareFootageIn" placeholder="SQ.Footage">
-        <input type="text" id="costIn" placeholder="List Price">
-        <select id="saleOrRent">
-          <option value="sale">For Sale</option>
-          <option value="rent">For Rent</option>
-        </select>
-        <input type="text" id="cityIn" placeholder="City">
-        <select id="images">
+    <div class="btns">
+      <button id="showAll" data-name="2">Show All</button>
+      <button id="forSale" data-name="1">For Sale</button>
+      <button id="forRent" data-name="2">For Rent</button>
+    </div>
+    <div class="inputDiv">
+        <select class="userInputs" id="saleOrRent">
+            <option value="sale">For Sale</option>
+            <option value="rent">For Rent</option>
+          </select>  
+        <input class="userInputs" type="text" id="cityIn" placeholder="City">
+        <input class="userInputs" type="text" id="costIn" placeholder="List Price">
+        <input class="userInputs" type="text" id="squareFootageIn" placeholder="SQ.Footage">
+        <select class="userInputs" id="images">
           <option value="classic-flats.jpg">classic-flat</option>
           <option value="haunted.png">haunted</option>
           <option value="older.jpg">older</option>
@@ -32,40 +34,40 @@
           <option value="shiny.jpg">shiny</option>
           <option value="stony.jpg">stony</option>
         </select>
-        <button type="button" id="addButtonSale">Add Listing</button>
+        <button class="userInputs" type="button" id="addButtonSale">Add Listing</button>
     </div>
     <h2>Featured Homes</h2>
-    <div id="featuredOut">
+    <div class="d-flex p-2"id="featuredOut">
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <a href="#" class="card-link"></a>
+        <a href="#" class="card-link"></a>
       </div>
     </div>
     <h2>All Results</h2>
     <div class="outputSale">        
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <a href="#" class="card-link"></a>
+        <a href="#" class="card-link"></a>
       </div>
     </div>
       
