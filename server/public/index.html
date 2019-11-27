@@ -13,18 +13,18 @@
 <body>
     <h1>Real Estate</h1>
     <div class="btns">
-      <button id="showAll" data-name="2">Show All</button>
-      <button id="forSale" data-name="1">For Sale</button>
-      <button id="forRent" data-name="2">For Rent</button>
+      <button id="showAll" value="1">Show All</button>
+      <button id="forSale" value="2">For Sale</button>
+      <button id="forRent" value="3">For Rent</button>
     </div>
     <div class="inputDiv">
         <select class="userInputs" id="saleOrRent">
             <option value="sale">For Sale</option>
             <option value="rent">For Rent</option>
           </select>  
-        <input class="userInputs" type="text" id="cityIn" placeholder="City">
-        <input class="userInputs" type="text" id="costIn" placeholder="List Price">
-        <input class="userInputs" type="text" id="squareFootageIn" placeholder="SQ.Footage">
+        <input class="input userInputs" type="text" id="cityIn" placeholder="City">
+        <input class="input userInputs" type="text" id="costIn" placeholder="List Price">
+        <input class="input userInputs" type="text" id="sqftIn" placeholder="SQ.Footage">
         <select class="userInputs" id="images">
           <option value="classic-flats.jpg">classic-flat</option>
           <option value="haunted.png">haunted</option>
@@ -34,11 +34,11 @@
           <option value="shiny.jpg">shiny</option>
           <option value="stony.jpg">stony</option>
         </select>
-        <button class="userInputs" type="button" id="addButtonSale">Add Listing</button>
+        <button class="userInputs" type="button" id="addListing">Add Listing</button>
     </div>
     <h2>Featured Homes</h2>
     <div class="d-flex p-2"id="featuredOut">
-      <img class="card-img-top" src="..." alt="Card image cap">
+      <img class="card-img-top" src="" alt="">
       <div class="card-body">
         <h5 class="card-title"></h5>
         <p class="card-text"></p>
@@ -55,7 +55,7 @@
     </div>
     <h2>All Results</h2>
     <div class="outputSale">        
-      <img class="card-img-top" src="..." alt="Card image cap">
+      <img class="card-img-top" src="" alt="">
       <div class="card-body">
         <h5 class="card-title"></h5>
         <p class="card-text"></p>

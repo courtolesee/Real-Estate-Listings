@@ -27,7 +27,7 @@ h2 {
     border-radius: 8px;   
 }
 
-#addButtonSale {
+#addListing {
     border-color: rgb(91, 104, 82);
     border-radius: 8px;   
 }
@@ -37,9 +37,9 @@ h2 {
     border-radius: 8px;   
 }
 
-#addButtonSale:hover {
+#addListing:hover {
     color: rgb(155, 97, 51);
-    border-radius: 8px;   
+    border-radius: 8px; 
 }
 
 .btns {
@@ -76,6 +76,10 @@ span {
     margin: 0%;
 }
 
+ul {
+    list-style-type: none;
+}
+
 #card-body {
     background-color: white;
 }
@@ -83,4 +87,7 @@ span {
 .userInputs {
     width: 15%;
     font-size: 20px;
+
 }
+
+
