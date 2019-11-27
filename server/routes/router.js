@@ -15,6 +15,7 @@ router.delete(`/:id`, (req, res)=>{
 
 router.get(`/`, (req, res)=>{
     console.log('in / GET');
+    // console.log('req.params.el:', req.params.el);
     let query = `SELECT * FROM listings;`;
     pool.query(query)
     .then(result=>{
