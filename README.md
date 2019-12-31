@@ -8,9 +8,9 @@ The Real Estate Listings App was built from the ground up to accomodate real est
 
 ## Installation
 1. Run `npm install` in your terminal
-2. Run `npm run server` in your terminal
-3. Run `npm run client` in your terminal (this will open a new browser in your tab)
-4. Create a database called `real_estate`, and run the queries in the listings.sql
+2. Run `npm start` in your terminal
+3. Create a database called `real_estate`, and run the queries in the listings.sql
+4. Go to http://localhost:5001/ in your browser
 
 ## Technologies Used
 - jQuery 
